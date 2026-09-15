@@ -1,10 +1,10 @@
 .text
-.globl main 
+.globl main
 main:
 
     li x22, 10 # b = 10
-    li x23, 4 # c = 4 
-    li x20, 3 # x = 3 
+    li x23, 4  # c = 4
+    li x20, 3  # x = 3
 
     li x5, 1
     beq x20, x5, Case1
@@ -25,11 +25,11 @@ main:
     j Exit
 
     Case3:
-    slli x21, x22, 1 # a = b * 2 
+    slli x21, x22, 1 # a = b * 2
     j Exit
 
     Case4:
-    srai x21, x22, 1 # a = b / 2 
+    srai x21, x22, 1 # a = b / 2
     j Exit
 
     Default:
@@ -37,5 +37,5 @@ main:
 
     Exit:
 
-    li a7,10
+    li a7, 10
     ecall
