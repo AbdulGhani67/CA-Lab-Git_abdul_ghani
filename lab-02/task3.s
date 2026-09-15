@@ -1,5 +1,5 @@
 .text
-.globl main 
+.globl main
 main:
 
     li x5, 0x200
@@ -9,7 +9,7 @@ main:
 
     Loop1:
     bge x22, x6, Exit1
-    slli x7, x22, 2 # Offset = i * 4 
+    slli x7, x22, 2 # Offset = i * 4
     add x7, x7, x5 # Address of a[i]
     sw x22, 0(x7) # a[i] = i
     addi x22, x22, 1 # i++
@@ -29,7 +29,5 @@ main:
     j Loop2
     Exit2:
 
-    li a7,10
+    li a7, 10
     ecall
-
-
