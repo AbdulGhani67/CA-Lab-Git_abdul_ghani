@@ -1,8 +1,15 @@
+.data
+D: .space 256
+
 .text
-.globl main 
+.globl main
 main:
-    
+
     # Variables mapping: a in x5, b in x6, i in x7, j in x29, D base in x10
+    li x5, 3      # a = 3
+    li x6, 4      # b = 4
+    la x10, D
+
     li x7, 0 # i = 0
 
     OuterLoop:
@@ -11,7 +18,7 @@ main:
 
     InnerLoop:
     bge x29, x6, InnerExit
-    slli x11, x29, 4 # Byte offset for D[4*j] 
+    slli x11, x29, 4 # Byte offset for D[4*j]
     add x11, x10, x11 # Absolute address of D[4*j]
     add x12, x7, x29 # Compute i + j
     sw x12, 0(x11) # D[4*j] = i + j
@@ -24,5 +31,5 @@ main:
 
     OuterExit:
 
-    li a7,10
+    li a7, 10
     ecall
