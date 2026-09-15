@@ -1,24 +1,17 @@
 .text
 .globl main
+
 main:
+ # assuming f,g,h,i,j in x19-x23
 
-    # if (i == j)
-    # f = g + h;
-    # else
-    # f = g - h;
+ bne x22, x23, Else # if (i != j) goto Else
+ add x19, x20, x21 # f = g + h
+ beq x0, x0, Exit # unconditional jump
 
-    # assuming that variables f to j are in registers x19-x23
-    li x20, 5          # g = 5
-    li x21, 3          # h = 3
-    li x22, 7          # i = 7
-    li x23, 7          # j = 7  (set to 8 to test the else branch)
+Else:
+ sub x19, x20, x21 # f = g - h
 
-    bne x22, x23, Else
-    add x19, x20, x21
-    beq x0, x0, Exit        # unconditional jump
-    Else: sub x19, x20, x21
+Exit:
 
-    Exit:                   # the code after if/else goes here
-
-    li a7, 10
-    ecall
+end:
+ j end
