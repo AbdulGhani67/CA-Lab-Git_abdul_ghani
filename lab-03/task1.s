@@ -1,4 +1,4 @@
-# Task 1: int sum(int a, int b) { return a + b; }
+# Task 1:
 .text
 main:
     addi x10, x0, 12        # a = 12 -> x10 (first argument)
