@@ -1,5 +1,3 @@
-# Task 3: void swap(long v[], size_t k) { temp = v[k]; v[k] = v[k+1]; v[k+1] = temp; }
-# v -> x10 (base address), k -> x11
 .data
 arr: .word 1, 2, 3, 4, 5
 sp1: .asciiz " "
