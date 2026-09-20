@@ -1,5 +1,3 @@
-# Task 4: void strcpy(char x[], char y[]) { i = 0; while ((x[i] = y[i]) != '\0') i += 1; }
-# x -> x10, y -> x11, i -> x19
 .data
 src: .asciiz "Hello, RISC-V!"
 dst: .word 0, 0, 0, 0, 0, 0, 0, 0   # 32-byte destination buffer
