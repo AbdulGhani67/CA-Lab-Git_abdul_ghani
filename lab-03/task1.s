@@ -1,4 +1,3 @@
-# Task 1:
 .text
 main:
     addi x10, x0, 12        # a = 12 -> x10 (first argument)
