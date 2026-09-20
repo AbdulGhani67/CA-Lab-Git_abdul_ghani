@@ -1,5 +1,3 @@
-# Task 2: long leaf_example(g, h, i, j) { f = (g + h) - (i + j); return f; }
-# g,h,i,j -> x10,x11,x12,x13 ; f -> x20 ; temporaries -> x18, x19
 .text
 main:
     addi x10, x0, 10        # g = 10
