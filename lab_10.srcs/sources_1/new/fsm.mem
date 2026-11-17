@@ -1,0 +1,38 @@
+// machine code of fsm.s, 4 bytes per instruction (little endian, lowest byte first)
+// bytes          address: instruction
+13 01 c0 1f   // 0x00: li sp, 0x1FC
+13 04 00 20   // 0x04: li s0, 0x200
+13 09 00 30   // 0x08: li s2, 0x300
+23 20 04 00   // 0x0C: sw x0, 0(s0)
+93 04 00 00   // 0x10: li s1, 0
+83 22 09 00   // 0x14: lw t0, 0(s2)
+e3 8c 02 fe   // 0x18: beq t0, x0, wait_state
+93 04 10 00   // 0x1C: li s1, 1
+33 85 02 00   // 0x20: add a0, t0, x0
+ef 00 c0 00   // 0x24: jal ra, countdown
+23 20 04 00   // 0x28: sw x0, 0(s0)
+6f f0 5f fe   // 0x2C: j wait_state
+13 01 81 ff   // 0x30: addi sp, sp, -8
+23 22 11 00   // 0x34: sw ra, 4(sp)
+23 20 31 01   // 0x38: sw s3, 0(sp)
+b3 09 05 00   // 0x3C: add s3, a0, x0
+23 20 34 01   // 0x40: sw s3, 0(s0)
+63 8a 09 00   // 0x44: beq s3, x0, count_done
+ef 00 00 02   // 0x48: jal ra, delay
+63 16 05 00   // 0x4C: bne a0, x0, count_done
+93 89 f9 ff   // 0x50: addi s3, s3, -1
+6f f0 df fe   // 0x54: j count_loop
+83 29 01 00   // 0x58: lw s3, 0(sp)
+83 20 41 00   // 0x5C: lw ra, 4(sp)
+13 01 81 00   // 0x60: addi sp, sp, 8
+67 80 00 00   // 0x64: jalr x0, 0(ra)
+37 23 26 00   // 0x68: lui t1, 0x262 (li t1, 2500000)
+13 03 03 5a   // 0x6C: addi t1, t1, 0x5a0 (li t1, 2500000)
+83 23 49 00   // 0x70: lw t2, 4(s2)
+63 9a 03 00   // 0x74: bne t2, x0, delay_reset
+13 03 f3 ff   // 0x78: addi t1, t1, -1
+e3 1a 03 fe   // 0x7C: bne t1, x0, delay_loop
+13 05 00 00   // 0x80: li a0, 0
+67 80 00 00   // 0x84: jalr x0, 0(ra)
+13 05 10 00   // 0x88: li a0, 1
+67 80 00 00   // 0x8C: jalr x0, 0(ra)
